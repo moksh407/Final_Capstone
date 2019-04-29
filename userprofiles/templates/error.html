@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+{{message2}}
+
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<h1>{{message}}</h1>
+<a href="{% url 'userDash' %}">Back to Dashboard</a>
+
+{% endblock %}

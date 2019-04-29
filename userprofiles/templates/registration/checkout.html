@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+Checkout
+
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<h1>Enter details</h1>
+
+<form method="POST" action="">
+	Card Number<input type="number" name="card_number">
+	Expiry<input type="number" name="expiry">
+	CVV<input type="number" name="cvv">
+	Name of Account Holder<input type="text" name="user_name">
+	Phone Number<input type="number" name="phone_number">
+	<input type="submit" name="submit" value="submit">
+</form>
+
+<a href="{% url 'index' %}">Back to Home</a>
+
+{% endblock %}

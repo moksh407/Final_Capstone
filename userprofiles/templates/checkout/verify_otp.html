@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+Verify OTP
+
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<h1>Please enter OTP for verification before proceeding to checkout!</h1>
+
+<h4>{{message}} to {{ user_phone }} with session id {{ session_detail }}</h4> 
+
+{% if button_text %}
+
+<a href="{% url 'send_otp' %}">{{button_text}}</a>
+
+{% else %}
+<form method="POST" action="{% url 'send_data' %}">
+	{% csrf_token %}
+	Credit/Debit Card Number <input type="text" name="card_number" maxlength="19" required="required"> <br>
+	Month <input type="number" name="month" min="1" max="12" required="required">
+	Year <input type="number" name="year" min="2015" max="2026" required="required"> <br>
+	CVV <input type="text" name="cvv" maxlength="3" required="required"> <br>
+	Name on Card <input type="text" name="name" maxlength="40" required="required"> <br>
+	Enter OTP <input type="text" name="otp" maxlength="6" required="required"><br>
+	<input type="hidden" name="session_detail" value="{{ session_detail }}">
+	<input type="submit" name="submit" value="submit"><br>
+</form>
+
+{% endif %}
+
+<br><br>
+
+<a href="{% url 'userDash' %}">Cancel</a>
+{% endblock  %}

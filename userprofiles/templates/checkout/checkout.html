@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+Checkout
+
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<h1>Enter details</h1>
+
+<form method="POST" action="{% url 'send_data' %}">
+	{% csrf_token %}
+	Card Number<input type="number" name="card_number" value="1234567891234567891" required><br>
+	Expiry Month<input type="number" name="month" value="11" required><br>
+	Expiry Year<input type="number" name="year" value="2019" required><br>
+	CVV<input type="number" name="cvv" value="123" required><br>
+	Name of Account Holder<input type="text" name="user_name" size="40" value="Moksh Gupta" required><br>
+	OTP <input type="text" name="otp" required><br>
+	<input type="hidden" name="session_detail" value="{{ session_detail }}">
+	<input type="submit" name="submit" value="submit"><br>
+</form>
+
+<br><br>
+
+<h1>OTP sent to {{ user.phone_number }} with session id {{ session_detail }}</h1>
+
+<a href="{% url 'index' %}">Back to Home</a>
+
+{% endblock %}
