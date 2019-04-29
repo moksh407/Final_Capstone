@@ -424,8 +424,11 @@ def call_flask_api(request, encrypted_text):
 	except requests.exceptions.ConnectionError as e:
 		message = "Encountered a problem!Server not responding."
 		message2 = "Failure"
+		
 		print('\n=======================Stack Trace')
 		print(e)
+		
+		#return something
 		return message, message2
 
 
